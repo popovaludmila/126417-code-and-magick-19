@@ -42,7 +42,6 @@ window.renderStatistics = function (ctx, players, times) {
   ctx.strokeText('Ура вы победили!', CLOUD_X + GAP * 2, CLOUD_Y + GAP * 3);
   ctx.strokeText('Список результатов:', CLOUD_X + GAP * 2, CLOUD_Y + GAP * 5);
 
-  ctx.fillStyle = '#000';
 
   var maxTime = getMaxElement(times);
   /*   Нахожу коэффициент пропорции  */
