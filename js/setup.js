@@ -121,7 +121,6 @@ var changeCoatColor = function () {
   selectedCoatColor.value = color;
 };
 
-
 wizardCoat.addEventListener('click', function () {
   changeCoatColor();
 });
@@ -145,5 +144,3 @@ var changeFireballColor = function () {
 fierBall.addEventListener('click', function () {
   changeFireballColor();
 });
-
-
