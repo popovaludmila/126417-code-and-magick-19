@@ -5,7 +5,8 @@
   userDialog.classList.remove('hidden');
   var similarListElement = userDialog.querySelector('.setup-similar-list');
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
-  var wizardCount = 4;
+  var WIZARD_COUNT = 4;
+
   var renderWizard = function (wizard) {
     var wizardElement = similarWizardTemplate.cloneNode(true);
 
@@ -18,7 +19,7 @@
 
   var onSuccess = function (wizards) {
     var fragment = document.createDocumentFragment();
-    for (var i = 0; i < wizardCount; i++) {
+    for (var i = 0; i < WIZARD_COUNT; i++) {
       fragment.appendChild(renderWizard(wizards[i]));
     }
     similarListElement.appendChild(fragment);

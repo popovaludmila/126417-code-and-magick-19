@@ -51,7 +51,7 @@
   };
 
   var submitForm = function () {
-    window.save(new FormData(form), function (response) {
+    window.save(new FormData(form), function () {
       setup.classList.add('hidden');
     });
     document.removeEventListener('keydown', onButtonSubmit);

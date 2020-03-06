@@ -57,5 +57,5 @@
     xhr.timeout = TIMEOUT_IN_MS;
     xhr.open('GET', URL);
     xhr.send();
-  }
+  };
 })();
