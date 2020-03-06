@@ -1,10 +1,10 @@
 'use strict';
 
-(function () {
+(window.dialog = function () {
   var setup = document.querySelector('.setup');
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = setup.querySelector('.setup-close');
-  var form = setup.querySelector('form');
+  var form = setup.querySelector('.setup-wizard-form');
   var buttonSubmit = setup.querySelector('.setup-submit');
   var dialogHandler = setup.querySelector('.upload');
   var startPopup = null;
@@ -51,7 +51,12 @@
   };
 
   var submitForm = function () {
-    form.submit();
+    form.addEventListener('submit', function (evt) {
+      window.save(new FormData(form), function (response) {
+        setup.classList.add('hidden');
+      });
+      evt.preventDefault();
+    });
     document.removeEventListener('keydown', onButtonSubmit);
   };
 
