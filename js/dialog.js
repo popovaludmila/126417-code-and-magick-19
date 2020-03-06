@@ -51,16 +51,15 @@
   };
 
   var submitForm = function () {
-    form.addEventListener('submit', function (evt) {
-      window.save(new FormData(form), function (response) {
-        setup.classList.add('hidden');
-      });
-      evt.preventDefault();
+    window.save(new FormData(form), function (response) {
+      setup.classList.add('hidden');
     });
     document.removeEventListener('keydown', onButtonSubmit);
   };
 
-  buttonSubmit.addEventListener('click', function () {
+  buttonSubmit.addEventListener('click', function (evt) {
+    evt.preventDefault();
+
     submitForm();
   });
 

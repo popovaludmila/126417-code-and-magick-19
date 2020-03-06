@@ -5,7 +5,7 @@
   userDialog.classList.remove('hidden');
   var similarListElement = userDialog.querySelector('.setup-similar-list');
   var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
-
+  var wizardCount = 4;
   var renderWizard = function (wizard) {
     var wizardElement = similarWizardTemplate.cloneNode(true);
 
@@ -16,14 +16,29 @@
     return wizardElement;
   };
 
-  window.load(function (wizards) {
+  var onSuccess = function (wizards) {
     var fragment = document.createDocumentFragment();
-    for (i = 0; i < 4; i++) {
+    for (var i = 0; i < wizardCount; i++) {
       fragment.appendChild(renderWizard(wizards[i]));
     }
     similarListElement.appendChild(fragment);
 
     userDialog.querySelector('.setup-similar').classList.remove('hidden');
-  });
+  };
+
+  var onError = function (errorMessage) {
+    var block = document.createElement('div');
+    block.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
+    block.style.position = 'absolute';
+    block.style.left = 0;
+    block.style.right = 0;
+    block.style.fontSize = '32px';
+
+    block.textContent = errorMessage;
+    document.body.insertAdjacentElement('afterbegin', block);
+  };
+
+  window.load(onSuccess, onError);
+
 })();
 
